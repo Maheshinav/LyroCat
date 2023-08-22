@@ -4,6 +4,7 @@ import {AiOutlineShoppingCart} from 'react-icons/ai';
 function NavBar() {
 	return (
 		<div>
+			<div> 
 			<div
 				className="collapse"
 				id="navbarToggleExternalContent"
@@ -28,13 +29,24 @@ function NavBar() {
 						aria-expanded="false"
 						aria-label="Toggle navigation"
 					>
-						<span className="navbar-toggler-icon" color= {"#ef9b0f"}></span>
+						<span className="navbar-toggler-icon"></span>
 					</button>
                     <div>
                         <AiOutlineShoppingCart color={"#ef9b0f"} size ={25}/>
                     </div>
 				</div>
 			</nav>
+			<nav className="navbar bg-body-tertiary">
+  <div className="container-fluid">
+    <form className="d-flex" role="search">
+      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+    </form>
+	
+  </div>
+ 
+</nav>
+</div>
+<hr className="hr" />
 		</div>
 	);
 }
