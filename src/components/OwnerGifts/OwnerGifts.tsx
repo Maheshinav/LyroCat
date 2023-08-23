@@ -15,7 +15,7 @@ const OwnerGifts = () => {
 						Some quick example text to build on the card title and make up the
 						bulk of the card's content.
 					</p>
-          <a href="#" className="btn btn-primary">Shop</a>
+          <a href="#" className="btn" style={{backgroundColor: "#ef9b0f"}}>Shop</a>
 				</div>
 			</div>
 		</div>
