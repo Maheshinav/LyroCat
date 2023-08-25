@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 const OwnerGifts = () => {
 	const Itemimage =
 		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692737845/Curata_Pewter_Bejeweled_Crystals_Gold-Tone_Enameled_Sophie_Siamese_Cat_Trinket_Box_on_18_Inch_Necklace.jpg";
@@ -15,7 +17,7 @@ const OwnerGifts = () => {
 						Some quick example text to build on the card title and make up the
 						bulk of the card's content.
 					</p>
-          <a href="#" className="btn" style={{backgroundColor: "#ef9b0f"}}>Shop</a>
+          <Link to='/Catjweleryboxes' className="btn" style={{backgroundColor: "#ef9b0f"}}>Shop</Link>
 				</div>
 			</div>
 		</div>

@@ -1,12 +1,16 @@
 import { useState } from "react";
+import "./NavBar.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BsFillCircleFill } from "react-icons/bs";
 import SideMenu from "../SideMenu/SideMenu";
 
-const NavBar = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-	const toggleMenu = (): void => {
-		setIsMenuOpen(!isMenuOpen);
-	};
+const NavBar= ({ cartCount }: { cartCount: number }) => {
+
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const toggleMenu = (): void => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 	return (
 		<div>
 			{isMenuOpen && <SideMenu />}
@@ -25,15 +29,31 @@ const NavBar = () => {
 						>
 							<span className="navbar-toggler-icon"></span>
 						</button>
-						<div>
-							<AiOutlineShoppingCart color="#ef9b0f" size={25} />
-						</div>
+						<div className="d-flex align-items-center">
+    <AiOutlineShoppingCart color="#ef9b0f" size={25} className="me-2" />
+    <div style={{ position: 'relative' }}>
+        <BsFillCircleFill color="#ef9b0f" size={20} />
+        {cartCount > 0 && (
+            <span style={{ 
+                position: 'absolute', 
+                top: '50%', 
+                left: '50%', 
+                transform: 'translate(-50%, -50%)', 
+                color: 'white', 
+                fontSize: '12px' 
+            }}>
+                {cartCount}
+            </span>
+        )}
+    </div>
+</div>
+
 					</div>
 				</nav>
 
 				<div
-					className="collapse"
-					id="navbarToggleExternalContent"
+					className="collapse collapse-horizontal"
+					id="collapseWidthExample"
 					data-bs-theme="dark"
 				>
 					<div className="bg-dark p-4">
@@ -42,6 +62,7 @@ const NavBar = () => {
 					</div>
 				</div>
 			</div>
+			<div></div>
 			<hr className="hr" />
 		</div>
 	);
