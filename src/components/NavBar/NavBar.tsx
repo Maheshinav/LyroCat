@@ -1,16 +1,17 @@
 import { useState } from "react";
+import {Link} from 'react-router-dom';
 import "./NavBar.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsFillCircleFill } from "react-icons/bs";
 import SideMenu from "../SideMenu/SideMenu";
 
-const NavBar= ({ cartCount }: { cartCount: number }) => {
+const NavBar = ({ cartCount }: { cartCount: number }) => {
+	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-
-  const toggleMenu = (): void => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+	const toggleMenu = (): void => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+	const Logo= "https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692995251/d221d82875e0490ca474a9d13884e0ab.png"
 	return (
 		<div>
 			{isMenuOpen && <SideMenu />}
@@ -30,24 +31,29 @@ const NavBar= ({ cartCount }: { cartCount: number }) => {
 							<span className="navbar-toggler-icon"></span>
 						</button>
 						<div className="d-flex align-items-center">
-    <AiOutlineShoppingCart color="#ef9b0f" size={25} className="me-2" />
-    <div style={{ position: 'relative' }}>
-        <BsFillCircleFill color="#ef9b0f" size={20} />
-        {cartCount > 0 && (
-            <span style={{ 
-                position: 'absolute', 
-                top: '50%', 
-                left: '50%', 
-                transform: 'translate(-50%, -50%)', 
-                color: 'white', 
-                fontSize: '12px' 
-            }}>
-                {cartCount}
-            </span>
-        )}
-    </div>
-</div>
-
+							<AiOutlineShoppingCart
+								color="#ef9b0f"
+								size={25}
+								className="me-2"
+							/>
+							<div style={{ position: "relative" }}>
+								<BsFillCircleFill color="#ef9b0f" size={20} />
+								{cartCount > 0 && (
+									<span
+										style={{
+											position: "absolute",
+											top: "50%",
+											left: "50%",
+											transform: "translate(-50%, -50%)",
+											color: "white",
+											fontSize: "12px",
+										}}
+									>
+										{cartCount}
+									</span>
+								)}
+							</div>
+						</div>
 					</div>
 				</nav>
 
@@ -62,7 +68,11 @@ const NavBar= ({ cartCount }: { cartCount: number }) => {
 					</div>
 				</div>
 			</div>
-			<div></div>
+			<Link to ="/"> 
+			<div className="d-flex justify-content-center align-items-center">
+    <img src={Logo} alt="Logo Description" className="img-fluid p-2" />
+</div>
+</Link>
 			<hr className="hr" />
 		</div>
 	);
