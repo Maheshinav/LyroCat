@@ -15,11 +15,9 @@ const Catjweleryboxes = ({ addToCart }: { addToCart: () => void }) => {
 					<div className="card">
 						<img src={itemimagedefault} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Card title</h5>
-							<p className="card-text">
-								This is a longer card with supporting text below as a natural
-								lead-in to additional content. This content is a little bit
-								longer.
+							<h5 className="card-title">Seameese cat trinket box</h5>
+							<p>
+								$74.99
 							</p>
 							<button
 								type="button"
@@ -35,11 +33,9 @@ const Catjweleryboxes = ({ addToCart }: { addToCart: () => void }) => {
 					<div className="card">
 						<img src={itemimagetwo} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Card title</h5>
-							<p className="card-text">
-								This is a longer card with supporting text below as a natural
-								lead-in to additional content. This content is a little bit
-								longer.
+							<h5 className="card-title">Cute cat love box</h5>
+							<p>
+								$65.00
 							</p>
 							<button
 								type="button"
@@ -55,11 +51,9 @@ const Catjweleryboxes = ({ addToCart }: { addToCart: () => void }) => {
 					<div className="card">
 						<img src={itemimagethree} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Card title</h5>
-							<p className="card-text">
-								This is a longer card with supporting text below as a natural
-								lead-in to additional content. This content is a little bit
-								longer.
+							<h5 className="card-title">Mermaid cat trinket box</h5>
+							<p>
+								$80.00
 							</p>
 							<button
 								type="button"
@@ -75,11 +69,9 @@ const Catjweleryboxes = ({ addToCart }: { addToCart: () => void }) => {
 					<div className="card">
 						<img src={itemimagefour} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Card title</h5>
-							<p className="card-text">
-								This is a longer card with supporting text below as a natural
-								lead-in to additional content. This content is a little bit
-								longer.
+							<h5 className="card-title">Flower art cat trinket box</h5>
+							<p>
+								$120.00
 							</p>
 							<button
 								type="button"

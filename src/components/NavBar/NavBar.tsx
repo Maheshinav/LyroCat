@@ -1,10 +1,8 @@
 import { useState, useRef } from "react";
 import { Offcanvas } from "bootstrap";
-
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BsFillCircleFill } from "react-icons/bs";
 import SideMenu from "../SideMenu/SideMenu";
 
 const NavBar = ({ cartCount }: { cartCount: number }) => {
@@ -20,10 +18,12 @@ const NavBar = ({ cartCount }: { cartCount: number }) => {
 			bsOffcanvas.toggle();
 		}
 	};
+
 	const offcanvasRef = useRef<HTMLDivElement | null>(null);
 
 	const Logo =
 		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692995251/d221d82875e0490ca474a9d13884e0ab.png";
+
 	return (
 		<div>
 			{isMenuOpen && <SideMenu />}
@@ -43,29 +43,26 @@ const NavBar = ({ cartCount }: { cartCount: number }) => {
 							<span className="navbar-toggler-icon"></span>
 						</button>
 						<div className="d-flex align-items-center">
-							<AiOutlineShoppingCart
-								color="#ef9b0f"
-								size={25}
-								className="me-2"
-								ddata-bs-toggle="offcanvas"
-								data-bs-target="#offcanvasWithBothOptions"
-								title="View your shopping cart"
+							<button
+								className="btn position-relative pr-1"
+								style={{ backgroundColor: "transparent", border: "none" }}
 								onClick={handleOffcanvasToggle}
-							/>
-							<div className="position-relative">
-								<BsFillCircleFill color="#ef9b0f" size={20} />
+							>
+								<AiOutlineShoppingCart
+									color="#ef9b0f"
+									size={25}
+									style={{ padding: 0, margin: 0 }}
+								/>
 								{cartCount > 0 && (
 									<span
-										className="position-absolute top-50 start-50 translate-middle"
-										style={{
-											color: "white",
-											fontSize: "12px",
-										}}
+										className="position-absolute top-19 start-100 translate-middle badge rounded-pill bg-danger"
+										style={{ transform: "translate(0, -50%)", left: "-15px" }}
 									>
 										{cartCount}
+										<span className="visually-hidden">items in cart</span>
 									</span>
 								)}
-							</div>
+							</button>
 						</div>
 					</div>
 				</nav>
@@ -81,6 +78,7 @@ const NavBar = ({ cartCount }: { cartCount: number }) => {
 					</div>
 				</div>
 			</div>
+
 			<Link to="/">
 				<div className="d-flex justify-content-center align-items-center">
 					<img src={Logo} alt="Logo Description" className="img-fluid p-2" />
@@ -107,8 +105,24 @@ const NavBar = ({ cartCount }: { cartCount: number }) => {
 					></button>
 				</div>
 				<div className="offcanvas-body">
-					<p>
-					</p>
+					<table className="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Item Name</th>
+								<th scope="col">Price</th>
+								<th scope="col">Quantity</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>{}</td>
+								<td>{}</td>
+								<td>{}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 
