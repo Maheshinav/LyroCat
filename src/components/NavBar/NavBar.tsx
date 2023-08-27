@@ -1,14 +1,24 @@
 import { useState, useRef } from "react";
 import { Offcanvas } from "bootstrap";
-import { Link } from "react-router-dom";
-import "./NavBar.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import SideMenu from "../SideMenu/SideMenu";
 
-const NavBar = ({ cartCount }: { cartCount: number }) => {
-	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+type Item = {
+	name: string;
+	price: number;
+	quantity: number;
+};
 
-	const toggleMenu = (): void => {
+type NavBarProps = {
+	cartCount: number;
+	cartItems: Item[];
+};
+
+const NavBar: React.FC<NavBarProps> = ({ cartCount, cartItems }) => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const offcanvasRef = useRef(null);
+
+	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
@@ -18,72 +28,56 @@ const NavBar = ({ cartCount }: { cartCount: number }) => {
 			bsOffcanvas.toggle();
 		}
 	};
-
-	const offcanvasRef = useRef<HTMLDivElement | null>(null);
-
-	const Logo =
-		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692995251/d221d82875e0490ca474a9d13884e0ab.png";
+	const totalAmount = cartItems.reduce(
+		(acc, item) => acc + item.price * item.quantity,
+		0
+	);
 
 	return (
 		<div>
 			{isMenuOpen && <SideMenu />}
-			<div>
-				<nav className="navbar navbar-dark bg-dark">
-					<div className="container-fluid">
+			<nav className="navbar navbar-dark bg-dark">
+				<div className="container-fluid">
+					<button
+						className="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarToggleExternalContent"
+						aria-controls="navbarToggleExternalContent"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+						onClick={toggleMenu}
+					>
+						<span className="navbar-toggler-icon"></span>
+					</button>
+					<div className="d-flex align-items-center">
 						<button
-							className="navbar-toggler"
-							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#navbarToggleExternalContent"
-							aria-controls="navbarToggleExternalContent"
-							aria-expanded="false"
-							aria-label="Toggle navigation"
-							onClick={toggleMenu}
+							className="btn position-relative pr-1"
+							style={{ backgroundColor: "transparent", border: "none" }}
+							onClick={handleOffcanvasToggle}
 						>
-							<span className="navbar-toggler-icon"></span>
+							<AiOutlineShoppingCart
+								color="#ef9b0f"
+								size={25}
+								style={{ padding: 0, margin: 0 }}
+							/>
+							{cartCount > 0 && (
+								<span
+									className="position-absolute top-19 start-100 translate-middle badge rounded-pill bg-color"
+									style={{
+										transform: "translate(0, -50%)",
+										left: "-15px",
+										backgroundColor: "#ef9b0f",
+									}}
+								>
+									{cartCount}
+									<span className="visually-hidden">items in cart</span>
+								</span>
+							)}
 						</button>
-						<div className="d-flex align-items-center">
-							<button
-								className="btn position-relative pr-1"
-								style={{ backgroundColor: "transparent", border: "none" }}
-								onClick={handleOffcanvasToggle}
-							>
-								<AiOutlineShoppingCart
-									color="#ef9b0f"
-									size={25}
-									style={{ padding: 0, margin: 0 }}
-								/>
-								{cartCount > 0 && (
-									<span
-										className="position-absolute top-19 start-100 translate-middle badge rounded-pill bg-danger"
-										style={{ transform: "translate(0, -50%)", left: "-15px" }}
-									>
-										{cartCount}
-										<span className="visually-hidden">items in cart</span>
-									</span>
-								)}
-							</button>
-						</div>
-					</div>
-				</nav>
-
-				<div
-					className="collapse collapse-horizontal"
-					id="collapseWidthExample"
-					data-bs-theme="dark"
-				>
-					<div className="bg-dark p-4">
-						<h5 className="text-body-emphasis h4">Collapsed content</h5>
-						<span className="text-body-secondary"></span>
 					</div>
 				</div>
-			</div>
-
-			<Link to="/">
-				<div className="d-flex justify-content-center align-items-center">
-					<img src={Logo} alt="Logo Description" className="img-fluid p-2" />
-				</div>
-			</Link>
+			</nav>
 
 			<div
 				ref={offcanvasRef}
@@ -105,28 +99,36 @@ const NavBar = ({ cartCount }: { cartCount: number }) => {
 					></button>
 				</div>
 				<div className="offcanvas-body">
-					<table className="table">
+					<table className="table table-responsive">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Item Name</th>
 								<th scope="col">Price</th>
 								<th scope="col">Quantity</th>
+								<th scope="col">Item Total</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>{}</td>
-								<td>{}</td>
-								<td>{}</td>
-							</tr>
+							{cartItems.map((item, index) => (
+								<tr key={index}>
+									<th scope="row">{index + 1}</th>
+									<td>{item.name}</td>
+									<td>${item.price}</td>
+									<td>{item.quantity}</td>
+									<td>${(item.price * item.quantity).toFixed(2)}</td>
+								</tr>
+							))}
 						</tbody>
+						<tfoot>
+							<tr>
+								<td className="text-right, strong"><strong> Total: </strong></td>
+								<td>${totalAmount.toFixed(2)} </td>
+							</tr>
+						</tfoot>
 					</table>
 				</div>
 			</div>
-
-			<hr className="hr" />
 		</div>
 	);
 };

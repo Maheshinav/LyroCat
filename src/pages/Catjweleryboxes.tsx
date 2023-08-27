@@ -1,12 +1,17 @@
-const Catjweleryboxes = ({ addToCart }: { addToCart: () => void }) => {
+type CatjweleryboxesProps = {
+	addToCart: (name: string, price: number) => void;
+};
+
+const Catjweleryboxes: React.FC<CatjweleryboxesProps> = ({ addToCart }) => {
 	const itemimagedefault =
 		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692737845/Curata_Pewter_Bejeweled_Crystals_Gold-Tone_Enameled_Sophie_Siamese_Cat_Trinket_Box_on_18_Inch_Necklace.jpg";
-	const itemimagetwo =
+	const Itemimage1 =
 		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692758360/PLAYFUL_KITTY_CAT_ON_BLUE_BASE_BEAUCHAMP.jpg";
-	const itemimagethree =
+	const Itemimage2 =
 		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692758359/H_D_Crystal_Ring_Holder_Dish.jpg";
-	const itemimagefour =
+	const Itemimage3 =
 		"https://res.cloudinary.com/sudeshmaldivesbook/image/upload/v1692758360/download_2.jpg";
+
 	return (
 		<div className="m-2">
 			<h2 className="text-center p-2">Cat Jwelery Boxes</h2>
@@ -16,67 +21,65 @@ const Catjweleryboxes = ({ addToCart }: { addToCart: () => void }) => {
 						<img src={itemimagedefault} className="card-img-top" alt="..." />
 						<div className="card-body">
 							<h5 className="card-title">Seameese cat trinket box</h5>
-							<p>
-								$74.99
-							</p>
+							<p>$74.99</p>
 							<button
 								type="button"
 								className="btn btn-outline-primary"
-								onClick={addToCart}
+								onClick={() => addToCart("Seameese cat trinket box", 74.99)}
 							>
 								Add to Cart
 							</button>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="row row-cols-1 row-cols-md-3 g-4">
 				<div className="col">
 					<div className="card">
-						<img src={itemimagetwo} className="card-img-top" alt="..." />
+						<img src={Itemimage1} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Cute cat love box</h5>
-							<p>
-								$65.00
-							</p>
+							<h5 className="card-title">Cute Cat Love Box</h5>
+							<p>$74.99</p>
 							<button
 								type="button"
 								className="btn btn-outline-primary"
-								onClick={addToCart}
+								onClick={() => addToCart("Cute Cat Love Box", 119.99)}
 							>
 								Add to Cart
 							</button>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="row row-cols-1 row-cols-md-3 g-4">
 				<div className="col">
 					<div className="card">
-						<img src={itemimagethree} className="card-img-top" alt="..." />
+						<img src={Itemimage2} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Mermaid cat trinket box</h5>
-							<p>
-								$80.00
-							</p>
+							<h5 className="card-title">Mermaid Cat Love Box</h5>
+							<p>$74.99</p>
 							<button
 								type="button"
 								className="btn btn-outline-primary"
-								onClick={addToCart}
+								onClick={() => addToCart("Mermaid Cat Love Box", 149.99)}
 							>
 								Add to Cart
 							</button>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="row row-cols-1 row-cols-md-3 g-4">
 				<div className="col">
 					<div className="card">
-						<img src={itemimagefour} className="card-img-top" alt="..." />
+						<img src={Itemimage3} className="card-img-top" alt="..." />
 						<div className="card-body">
-							<h5 className="card-title">Flower art cat trinket box</h5>
-							<p>
-								$120.00
-							</p>
+							<h5 className="card-title">Flower Cat Jwelery Box</h5>
+							<p>$74.99</p>
 							<button
 								type="button"
 								className="btn btn-outline-primary"
-								onClick={addToCart}
+								onClick={() => addToCart("Flower Cat Jwelery Box", 169.99)}
 							>
 								Add to Cart
 							</button>
