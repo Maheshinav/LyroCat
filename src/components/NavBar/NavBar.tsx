@@ -41,18 +41,17 @@ const NavBar: React.FC<NavBarProps> = ({ cartCount, cartItems }) => {
 					<button
 						className="navbar-toggler"
 						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#navbarToggleExternalContent"
-						aria-controls="navbarToggleExternalContent"
+						data-bs-toggle="dropdown"
 						aria-expanded="false"
 						aria-label="Toggle navigation"
 						onClick={toggleMenu}
 					>
 						<span className="navbar-toggler-icon"></span>
 					</button>
-					<div className="d-flex align-items-center">
+					<SideMenu />
+					<div className="d-flex align-items-center position-relative">
 						<button
-							className="btn position-relative pr-1"
+							className="btn"
 							style={{ backgroundColor: "transparent", border: "none" }}
 							onClick={handleOffcanvasToggle}
 						>
@@ -63,11 +62,12 @@ const NavBar: React.FC<NavBarProps> = ({ cartCount, cartItems }) => {
 							/>
 							{cartCount > 0 && (
 								<span
-									className="position-absolute top-19 start-100 translate-middle badge rounded-pill bg-color"
+									className="position-absolute badge rounded-pill"
 									style={{
-										transform: "translate(0, -50%)",
-										left: "-15px",
+										top: 9,
+										right: 9,
 										backgroundColor: "#ef9b0f",
+										transform: "translate(50%, -50%)",
 									}}
 								>
 									{cartCount}
@@ -122,7 +122,10 @@ const NavBar: React.FC<NavBarProps> = ({ cartCount, cartItems }) => {
 						</tbody>
 						<tfoot>
 							<tr>
-								<td className="text-right, strong"><strong> Total: </strong></td>
+							<td><strong>Total:</strong></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>${totalAmount.toFixed(2)} </td>
 							</tr>
 						</tfoot>

@@ -1,17 +1,13 @@
 
+import "./SideMenu.css";
 
 const SideMenu = () => {
   return (
-    <div>
-
-<div className="card" style={{width: '18rem'}}>
-  <ul className="list-group list-group-flush">
-    <li className="list-group-item">Gifts for Owners</li>
-    <li className="list-group-item">Gifts for Cats</li>
-  </ul>
-</div>
+    <div className="dropdown-menu w-50">
+      <a className="dropdown-item hoverable-item" href="#">Gifts for Owners</a>
+      <a className="dropdown-item hoverable-item" href="#">Gifts for Cats</a>
     </div>
-  )
-}
+  );
+};
 
 export default SideMenu;
